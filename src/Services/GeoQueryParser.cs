@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace tsears.MVCWeather.Services.Geo
 {
-
     public class GeoQueryParser : IGeoQueryParser
     {
         public Dictionary<string, string> Parse(string q)
