@@ -12,3 +12,6 @@ sudo apt-get update
 
 echo "Installing dotnet"
 apt-get install -y dotnet-dev-1.0.0-preview2.1-003177
+
+echo "Set dotnet environment"
+export ASPNETCORE_ENVIRONMENT=Development
