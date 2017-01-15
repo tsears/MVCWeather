@@ -1,0 +1,23 @@
+//@import url(https://fonts.googleapis.com/css?family=Raleway:400,600,800);
+
+$step-size-heading: 0.33333;
+@mixin heading-size($size) {
+    font-size: $size * $step-size-heading + em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 10px 0;
+	//color: $linkColor;
+	//font-family: 'Indie Flower', sans-serif;
+	font-weight: 600;
+}
+
+$start: 6;
+@each $h in h1, h2, h3, h4, h5, h6 {
+
+	#{$h} {
+		@include heading-size($start);
+	}
+
+	$start: $start - 1;
+}

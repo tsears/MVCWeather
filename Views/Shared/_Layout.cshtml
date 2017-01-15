@@ -2,10 +2,11 @@
 <html>
     <head>
         <title>@ViewData["Title"] - By Tom Sears</title>
+        <link rel="stylesheet" href="/styles/main.min.css"/>
     </head>
     <body>
         <header>
-            The Weather
+            @Html.Partial("GlobalNav")
         </header>
         <div>
             @RenderBody()

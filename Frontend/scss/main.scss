@@ -1,0 +1,36 @@
+@import 'reset';
+@import 'headings';
+@import 'search-container';
+@import 'forecast-item';
+@import 'forecast-container';
+
+html, body {
+  height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #444;
+  color: #eee;
+
+  >div {
+    flex-grow: 1;
+  }
+}
+
+div, p {
+  margin: 1em;
+}
+
+header, footer {
+  background-color: rgba(0,0,0,0.9);
+  padding: 1em;
+  box-shadow: 0 0 10px #000;
+}
+
+
+.center {
+  text-align: center;
+}
