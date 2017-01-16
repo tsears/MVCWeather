@@ -1,5 +1,7 @@
 using tsears.MVCWeather.Services.Geo;
 using System.Text;
+using System;
+using System.Threading.Tasks;
 using tsears.MVCWeather.DataStructures;
 
 namespace tsears.MVCWeather.Services.Geo
@@ -14,17 +16,22 @@ namespace tsears.MVCWeather.Services.Geo
             _geoQueryDispatchService = geoQueryDispatchService;
         }
 
-        public GeoCoordinate Query(string q) {
+        public async Task<GeoCoordinate> Query(string q) {
             var queryParts = _geoQueryParser.Parse(q);
-            var sb = new StringBuilder("http://https://api.geocod.io/v1/geocode?");
+            var sb = new StringBuilder("https://api.geocod.io/v1/geocode?");
             
             foreach(var k in queryParts.Keys) {
                 sb.Append($"{k}={queryParts[k]}&");
             }
 
+            sb.Append("api_key=");
+            sb.Append(Environment.GetEnvironmentVariable("GEOCODIO_API_KEY"));
+
             var query = sb.ToString();
 
-            return _geoQueryDispatchService.Query(query);
+            Console.WriteLine(query);
+
+            return await _geoQueryDispatchService.Query(query).ConfigureAwait(false);
         }
     }
 }

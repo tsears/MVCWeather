@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using tsears.MVCWeather.Services.Geo;
+using tsears.MVCWeather.Services;
 
 namespace tsears.MVCWeather
 {
@@ -24,9 +25,12 @@ namespace tsears.MVCWeather
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var geoRestSvc = new RestRequestor<GeoResponse>();
+            var parser = new GeoQueryParser();
+            var dispatchSvc = new GeocodioQueryDispatchService(geoRestSvc);
             // Add framework services.
             services.AddMvc();
-            services.AddSingleton<IGeoQueryParser>(new GeoQueryParser());
+            services.AddSingleton<IGeoQueryService>(new GeocodioQueryService(parser, dispatchSvc));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

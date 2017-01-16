@@ -1,22 +1,25 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using tsears.MVCWeather.Services.Geo;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace tsears.MVCWeather.Controllers
 {
     [Route("api/[controller]")]
     public class WeatherController : Controller
     {
-        private readonly IGeoQueryParser _geoQueryParser;
+        private readonly IGeoQueryService _geoQueryService;
 
-        public WeatherController(IGeoQueryParser geoQueryParser) {
-          this._geoQueryParser = geoQueryParser;
+        public WeatherController(IGeoQueryService geoQueryService) {
+          this._geoQueryService = geoQueryService;
         }
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<string> Get(string query)
         {
-            return new string[] { "value1", "value2" };
+            var coords = await _geoQueryService.Query(query);
+            return JsonConvert.SerializeObject(coords);
         }
     }
 }
