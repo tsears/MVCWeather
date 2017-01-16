@@ -37,7 +37,6 @@ namespace tsears.MVCWeather.Services.Geo
               break;
             default:
               throw new NotImplementedException();
-              break;
           }
 
           return parts;

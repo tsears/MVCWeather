@@ -29,8 +29,6 @@ namespace tsears.MVCWeather.Services.Geo
 
             var query = sb.ToString();
 
-            Console.WriteLine(query);
-
             return await _geoQueryDispatchService.Query(query).ConfigureAwait(false);
         }
     }

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using tsears.MVCWeather.Services.Geo;
+using tsears.MVCWeather.Services.Weather;
 using tsears.MVCWeather.Services;
 
 namespace tsears.MVCWeather
@@ -26,11 +27,14 @@ namespace tsears.MVCWeather
         public void ConfigureServices(IServiceCollection services)
         {
             var geoRestSvc = new RestRequestor<GeoResponse>();
+            var weatherRestSvc = new RestRequestor<ForecastResponse>();
             var parser = new GeoQueryParser();
-            var dispatchSvc = new GeocodioQueryDispatchService(geoRestSvc);
+            var geoDispatchSvc = new GeocodioQueryDispatchService(geoRestSvc);
+            var weatherDispatchSvc = new DarkskyQueryDispatchService(weatherRestSvc);
             // Add framework services.
             services.AddMvc();
-            services.AddSingleton<IGeoQueryService>(new GeocodioQueryService(parser, dispatchSvc));
+            services.AddSingleton<IGeoQueryService>(new GeocodioQueryService(parser, geoDispatchSvc));
+            services.AddSingleton<IWeatherQueryService>(new DarkskyQueryService(weatherDispatchSvc));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
