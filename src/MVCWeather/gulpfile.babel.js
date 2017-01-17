@@ -1,19 +1,39 @@
-"use strict";
 import gulp from 'gulp';
-import sass from 'gulp-sass';
-import sassGlob from 'gulp-sass-glob';
-import sourceMaps from 'gulp-sourcemaps';
-import rename from 'gulp-rename';
+import gulpLoadPlugins from 'gulp-load-plugins';
+import ScriptTasks from './gulp-tasks/scripts';
+import CssTasks from './gulp-tasks/css';
+import DevTasks from './gulp-tasks/dev';
 
-gulp.task('sass', () => {
-    gulp.src('Frontend/scss/**/[^_]*.scss')
-      .pipe(sourceMaps.init())
-      .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-      .pipe(rename('main.min.css'))
-      .pipe(sourceMaps.write('.'))
-      .pipe(gulp.dest('wwwroot/styles'));
+let plugins = gulpLoadPlugins({
+	pattern: [
+		'gulp-*',
+		'gulp.*',
+		'webpack*'
+	]
 });
 
-gulp.task('default', ['sass'], () => {
-    gulp.watch('Frontend/**/*.scss', ['sass']);
-})
+// Script Tasks
+let scriptTasks = new ScriptTasks(gulp, plugins);
+gulp.task('lint', scriptTasks.lint());
+gulp.task('angularLib', scriptTasks.angularLib());
+gulp.task('scriptCompile', scriptTasks.scriptCompile());
+gulp.task('angularPartials', scriptTasks.angularPartials());
+
+// Css Tasks
+let cssTasks = new CssTasks(gulp, plugins);
+gulp.task('sass', cssTasks.sass());
+
+// Dev Tasks
+let devTasks = new DevTasks(gulp, plugins);
+gulp.task('watch', devTasks.watch());
+
+gulp.task('default',
+  [
+    'lint',
+    'angularLib',
+    'scriptCompile',
+    'angularPartials',
+    'sass',
+    'watch',
+  ]
+);
