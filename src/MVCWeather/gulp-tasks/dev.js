@@ -7,7 +7,7 @@ export default class DevTasks {
   watch() {
     let self = this;
     return () => {
-      self.gulp.watch('Frontend/**/*.js', ['lint', 'scriptCompile']);
+      self.gulp.watch('Frontend/**/*.js', ['lint', 'scriptCompile', 'jsTest']);
       self.gulp.watch('Frontend/**/*.scss', ['sass']);
       self.gulp.watch('Frontend/**/*.html', ['angularPartials']);
     }

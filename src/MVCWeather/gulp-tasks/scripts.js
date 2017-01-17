@@ -5,7 +5,7 @@ export default class ScriptTasks {
   }
 
   lint() {
-    let self = this;
+    const self = this;
   	return () => {
       return self.gulp.src([
   			'gulpfile.babel.js',
@@ -21,7 +21,7 @@ export default class ScriptTasks {
   }
 
   angularLib() {
-    let self = this;
+    const self = this;
     return () => {
     	return self.gulp.src([
   			'node_modules/angular/angular.min.js',
@@ -35,7 +35,7 @@ export default class ScriptTasks {
   }
 
   angularPartials() {
-    let self = this;
+    const self = this;
     return () => {
       return self.gulp.src(['Frontend/**/*.html'])
 		  .pipe(self.gulp.dest('wwwroot/ng-partials'));
@@ -43,7 +43,7 @@ export default class ScriptTasks {
   }
 
   scriptCompile() {
-    let self = this;
+    const self = this;
     return () => {
     	return self.gulp.src('Frontend/jsapp/weather.js')
     		.pipe(self.plugins.webpackStream({
@@ -69,4 +69,24 @@ export default class ScriptTasks {
     		.pipe(self.plugins.sourcemaps.write('.'));
     }
   }
+
+	jsTest() {
+		const self = this;
+		
+		return (done) => {
+			new self.plugins.karma.Server (
+				{
+					configFile: __dirname + '/../karma.conf.js',
+					singleRun: true
+				}, (err) => {
+					if (!err) {
+						done();
+					} else {
+						done(new self.plugins.util.PluginError('karma', {
+							message: `Tests failed (${err})`
+						}));
+					}
+				}).start();
+		};
+	}
 }

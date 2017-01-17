@@ -8,7 +8,8 @@ let plugins = gulpLoadPlugins({
 	pattern: [
 		'gulp-*',
 		'gulp.*',
-		'webpack*'
+		'webpack*',
+    'karma'
 	]
 });
 
@@ -18,6 +19,7 @@ gulp.task('lint', scriptTasks.lint());
 gulp.task('angularLib', scriptTasks.angularLib());
 gulp.task('scriptCompile', scriptTasks.scriptCompile());
 gulp.task('angularPartials', scriptTasks.angularPartials());
+gulp.task('jsTest', scriptTasks.jsTest());
 
 // Css Tasks
 let cssTasks = new CssTasks(gulp, plugins);
@@ -32,6 +34,7 @@ gulp.task('default',
     'lint',
     'angularLib',
     'scriptCompile',
+    'jsTest',
     'angularPartials',
     'sass',
     'watch',
