@@ -3,6 +3,8 @@
 @import 'search-container';
 @import 'forecast-item';
 @import 'forecast-container';
+@import 'tables';
+@import '../jsapp/**/*.scss';
 
 html, body {
   height: 100%;
@@ -20,7 +22,7 @@ body {
   }
 }
 
-div, p {
+div, p, table {
   margin: 1em;
 }
 

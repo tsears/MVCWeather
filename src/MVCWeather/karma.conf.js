@@ -16,6 +16,12 @@ module.exports = function(config) {
 			pattern: 'node_modules/angular/angular.min.js',
 			included: true
 		}, {
+			pattern: 'node_modules/angular-mocks/angular-mocks.js',
+			included: true
+		}, {
+			pattern: 'node_modules/angular-animate/angular-animate.min.js',
+			included: true
+		}, {
 			pattern: 'Frontend/jsapp/**/*.js',
 			included: true
 		}, {

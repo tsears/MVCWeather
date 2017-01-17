@@ -25,6 +25,7 @@ export default class ScriptTasks {
     return () => {
     	return self.gulp.src([
   			'node_modules/angular/angular.min.js',
+				'node_modules/angular-animate/angular-animate.min.js'
   		])
   		.pipe(self.plugins.concat('nglib.js'))
   		.pipe(self.plugins.uglify({

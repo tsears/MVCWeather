@@ -1,0 +1,17 @@
+#current-conditions-card {
+    visibility: hidden;
+    transition:opacity linear 0.5s;
+
+    &.hidden {
+        opacity: 0;
+    }
+
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .data {
+        display: flex;
+    }
+}

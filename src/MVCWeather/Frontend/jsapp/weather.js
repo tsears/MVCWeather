@@ -1,7 +1,10 @@
-const app = angular.module('weatherApp', []);
-angular.module('weatherDirectives', []);
+import WeatherController from './WeatherController';
+import CurrentConditions from './Card-CurrentConditions/CurrentConditions';
 
-app.controller('weatherController', ['$http', function($http) {
-    
-}])
 
+const d = angular.module('weatherDirectives', []);
+d.directive('currentConditionsCard', () => new CurrentConditions());
+
+const app = angular.module('weatherApp', ['weatherDirectives', 'ngAnimate']);
+
+app.controller('weatherController', ['$http', '$timeout', WeatherController]);

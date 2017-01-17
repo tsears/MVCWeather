@@ -6,23 +6,33 @@
     Layout = "_Layout";
 }
 
-<h1 class="center">The Weather</h1>
 
-<div id="search-container">
-<h2>Search</h2>
-<input/>
-<p>City, State -OR- Zip Code</p>
-</div>
+<div ng-app="weatherApp" ng-controller="weatherController as wvm">
 
-<div id="forecast-container">
-  <div class="forecast-item">
-    <img src="//placehold.it/100x100"/>
-    <h2>40&deg;</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ligula
-      lorem. Sed nisi nisl, tempor eget sagittis at, interdum a dui. Cras nisi diam,
-      efficitur a dapibus convallis, mattis vel orci. Praesent ac augue purus. Interdum
-      et malesuada fames ac ante ipsum primis in faucibus.
-    </p>
+  <h1 class="center">The Weather</h1>
+
+  <div id="big-container" ng-class="wvm.currentConditions ? 'side-search' : 'big-search'">
+    <div id="search-container">
+      <h2>Search</h2>
+      <input placeholder="Enter City or Zip" ng-model="wvm.query"/><button ng-click="wvm.getWeatherData()">Get Forescast</button>
+      <p>City, State -OR- Zip Code</p>
+    </div>
+    <div id="current-conditions-container">
+      <current-conditions-card data="wvm.currentConditions" ng-class="wvm.visibility" ng-if="wvm.currentConditions"></current-conditions-card>
+    </div>
   </div>
+
+  <div id="forecast-container">
+    <div class="forecast-item">
+      <img src="//placehold.it/100x100"/>
+      <h2>40&deg;</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ligula
+        lorem. Sed nisi nisl, tempor eget sagittis at, interdum a dui. Cras nisi diam,
+        efficitur a dapibus convallis, mattis vel orci. Praesent ac augue purus. Interdum
+        et malesuada fames ac ante ipsum primis in faucibus.
+      </p>
+    </div>
+  </div>
+
 </div>
