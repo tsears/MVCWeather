@@ -1,0 +1,15 @@
+.loading-icon {
+    transition: all 1s linear;
+
+    &.hidden {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    &.visible {
+        opacity: 1;
+        max-height: 100em;
+        overflow: auto;
+    }
+}
