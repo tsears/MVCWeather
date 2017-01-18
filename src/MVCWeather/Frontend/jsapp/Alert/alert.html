@@ -1,0 +1,8 @@
+<div ng-click="avm.alertClicked()" class="alert">
+    <div>
+        <strong>{{avm.data.title}}</strong> until {{avm.data.expires * 1000 | date: 'EEEE HH:mm'}}
+    </div>
+    <div class="alertDescription" ng-class="avm.descriptionVisible ? 'visible' : 'hidden'">
+        <pre>{{avm.data.description}}</pre>
+    </div>
+</div>

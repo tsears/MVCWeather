@@ -1,0 +1,21 @@
+.alert {
+    transition: background-color 0.3s;
+    &:hover {
+        cursor: pointer;
+        background-color: #ffaa9e;
+    }
+
+    .alertDescription {
+        transition: max-height 1s, overflow 1s;
+
+        &.hidden {
+            max-height: 0px;
+            overflow: hidden;
+        }
+
+        &.visible {
+            max-height: 200em;
+        }
+
+    }
+}

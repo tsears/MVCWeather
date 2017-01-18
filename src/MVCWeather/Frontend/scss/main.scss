@@ -1,9 +1,9 @@
 @import 'reset';
 @import 'headings';
 @import 'search-container';
-@import 'forecast-item';
 @import 'forecast-container';
 @import 'tables';
+@import 'notifications';
 @import '../jsapp/**/*.scss';
 
 html, body {
@@ -32,6 +32,10 @@ header, footer {
   box-shadow: 0 0 10px #000;
 }
 
+
+strong {
+  font-weight: bold;
+}
 
 .center {
   text-align: center;

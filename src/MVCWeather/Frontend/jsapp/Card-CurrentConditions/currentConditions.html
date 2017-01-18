@@ -1,16 +1,16 @@
 <div id="current-conditions-card">
-    <h2>Current Conditions as of {{data.time * 1000 | date:'MM/dd/yyyy HH:mm'}}</h2>
+    <h2>Current Conditions as of {{data.time * 1000 | date:'EEEE MM/dd/yyyy HH:mm'}}</h2>
     <div class="data">
         <div>
             <div>
                 <img src="http://placehold.it/100x100"/>
             </div>
             <div>
-                {{data.temperature}}
+                <h2 class="center">{{data.temperature | number: 0}}&deg;</h2>
             </div>
-            <div>
+            <p class="center">
                 {{data.summary}}
-            </div>
+            </p>
         </div>
         <div>
             <table>

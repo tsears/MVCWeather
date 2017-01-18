@@ -14,7 +14,7 @@
   <div id="big-container" ng-class="wvm.currentConditions ? 'side-search' : 'big-search'">
     <div id="search-container">
       <h2>Search</h2>
-      <input placeholder="Enter City or Zip" ng-model="wvm.query"/><button ng-click="wvm.getWeatherData()">Get Forescast</button>
+      <input placeholder="Enter City or Zip" ng-model="wvm.query"/><button ng-click="wvm.getWeatherData()">Get Forecast</button>
       <p>City, State -OR- Zip Code</p>
     </div>
     <div id="current-conditions-container">
@@ -22,17 +22,12 @@
     </div>
   </div>
 
-  <div id="forecast-container">
-    <div class="forecast-item">
-      <img src="//placehold.it/100x100"/>
-      <h2>40&deg;</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ligula
-        lorem. Sed nisi nisl, tempor eget sagittis at, interdum a dui. Cras nisi diam,
-        efficitur a dapibus convallis, mattis vel orci. Praesent ac augue purus. Interdum
-        et malesuada fames ac ante ipsum primis in faucibus.
-      </p>
-    </div>
+  <h1 ng-if="wvm.alerts">Alerts</h1>
+  <alert ng-repeat="a in wvm.alerts | orderBy: 'time * 1000'" data="a" class="error-notification" ng-if="wvm.alerts"></alert>
+
+  <h1 ng-if="wvm.dailyForecastData">Forecast for this Week</h1>
+  <div id="forecast-container" ng-style="wvm.dailyForecastData ? {'overflow-x' : 'scroll' } : {}">
+    <forecast-day-card ng-repeat="d in wvm.dailyForecastData.data" data="d" ng-if="wvm.dailyForecastData"></forecast-day-card>
   </div>
 
 </div>
