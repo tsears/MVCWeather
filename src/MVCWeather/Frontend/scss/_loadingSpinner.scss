@@ -13,3 +13,34 @@
         overflow: auto;
     }
 }
+
+.loading-overlay {
+    background-color: rgba(0,0,0,0.8);
+    position:fixed;
+    transition: top 1s linear 1s, bottom 1s linear 1s, left 1s linear, right 1s linear;
+
+    svg {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 45%;
+        top: 45%;
+    }
+
+    &.hidden {
+        top: 50%;
+        left: 45%;
+        right: 45%;
+        bottom: 50%;
+    }
+    
+    &.visible {
+        z-index:1000;
+        margin-left: 0;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}

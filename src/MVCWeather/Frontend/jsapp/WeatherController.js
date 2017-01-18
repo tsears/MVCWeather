@@ -5,7 +5,7 @@ export default class WeatherController {
         this.cookies = $cookies;
         this.query = '';
         this.visibility = 'hidden';
-        this.loading = 'false';
+        this.loading = false;
         this.iconMappings = iconMappings;
 
         const lastQuery = this.cookies.get('lastQuery');
@@ -19,15 +19,19 @@ export default class WeatherController {
 
     getWeatherData() {
         const self = this;
-        const url = `/api/Weather?query=${this.query}`;
+        const url = `/api/weather?query=${this.query}`;
         this.loading = true;
         
         self.http.get(url).then((resp) => {
             this.cookies.put('lastQuery', this.query);
+
             self.dailyForecastData = resp.data.Weather.daily;
             self.hourlyForecastData = resp.data.Weather.hourly;
             self.currentConditions = resp.data.Weather.currently;
             self.alerts = resp.data.Weather.alerts;
+
+            self.geoInput = resp.data.Geo.input;
+            self.geoMatches = resp.data.Geo.results;
 
             this.timeout(() => {
                 if (this.visibility === 'hidden') {

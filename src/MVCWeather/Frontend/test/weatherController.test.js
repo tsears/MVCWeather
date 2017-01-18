@@ -11,8 +11,19 @@ describe('Weather Controller Tests', () => {
         $rootScope = $injector.get('$rootScope');
 
         $httpBackend.when('GET', function(url) {
-            return url.indexOf('/api/Weather?query=12345') > -1;
+            return url.indexOf('/api/weather?query=12345') > -1;
         }).respond(200, {
+            Geo: {
+                input: {
+                    address_components: {
+                        zip: 12345
+                    }
+                },
+                results: [
+                    { },
+                    { }
+                ]
+            },
             Weather: {
                 currently: {
                     temperature: 72.0
@@ -66,15 +77,36 @@ describe('Weather Controller Tests', () => {
 
         it('Calls weather api', () => {
             const data = 
-            $httpBackend.expectGET('/api/Weather?query=12345');
+            $httpBackend.expectGET('/api/weather?query=12345');
             weatherController.query = '12345';
             weatherController.getWeatherData();
 
             $httpBackend.flush();
         });
 
+        it('Populates Geo Info', () => {
+            $httpBackend.expectGET('/api/weather?query=12345');
+            weatherController.query = 12345;
+            weatherController.getWeatherData();
+
+            $httpBackend.flush();
+
+            expect(weatherController.geoInput.address_components.zip).toBe(12345);
+        });
+
+        it('Populates Geo Matches', () => {
+            $httpBackend.expectGET('/api/weather?query=12345');
+            weatherController.query = 12345;
+            weatherController.getWeatherData();
+
+            $httpBackend.flush();
+
+            expect(weatherController.geoMatches.length).toBe(2);
+
+        });
+
         it('Populates Current Conditions', () => {
-            $httpBackend.expectGET('/api/Weather?query=12345');
+            $httpBackend.expectGET('/api/weather?query=12345');
             weatherController.query = '12345';
             weatherController.getWeatherData();
 
@@ -84,7 +116,7 @@ describe('Weather Controller Tests', () => {
         });
 
         it('Populates Daily Forecasts', () => {
-            $httpBackend.expectGET('/api/Weather?query=12345');
+            $httpBackend.expectGET('/api/weather?query=12345');
             weatherController.query = '12345';
             weatherController.getWeatherData();
 
@@ -97,7 +129,7 @@ describe('Weather Controller Tests', () => {
         });
 
         it('Populates Hourly Forecasts', () => {
-            $httpBackend.expectGET('/api/Weather?query=12345');
+            $httpBackend.expectGET('/api/weather?query=12345');
             weatherController.query = '12345';
             weatherController.getWeatherData();
 
@@ -109,7 +141,7 @@ describe('Weather Controller Tests', () => {
         });
 
         it('Populates Alerts', () => {
-            $httpBackend.expectGET('/api/Weather?query=12345');
+            $httpBackend.expectGET('/api/weather?query=12345');
             weatherController.query = '12345';
             weatherController.getWeatherData();
 

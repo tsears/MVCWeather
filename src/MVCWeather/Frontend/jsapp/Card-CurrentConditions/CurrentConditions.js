@@ -3,6 +3,7 @@ export default class CurrentConditions {
         this.restrict = 'E';
         this.scope = {
             data: '=',
+            geo: '='
         };
         this.replace = true;
         this.templateUrl = '/ng-partials/jsapp/Card-CurrentConditions/currentConditions.html';

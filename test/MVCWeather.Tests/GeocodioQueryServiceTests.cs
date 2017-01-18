@@ -1,10 +1,6 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 using Moq;
-using tsears.MVCWeather.Services.Geo;
 using System.Collections.Generic;
-using tsears.MVCWeather.DataStructures;
-
 
 namespace tsears.MVCWeather.Services.Geo.Tests
 {
@@ -17,18 +13,17 @@ namespace tsears.MVCWeather.Services.Geo.Tests
             mockParser.Setup(p => p.Parse(It.IsAny<string>())).Returns(new Dictionary<string, string>() { {"postal_code", "12345"} });
             
             var mockQueryDispatchSvc = new Mock<IGeoQueryDispatchService>();
-            mockQueryDispatchSvc.Setup(q => q.Query(It.IsAny<string>())).ReturnsAsync(new GeoCoordinate("0", "0"));
+            mockQueryDispatchSvc.Setup(q => q.Query(It.IsAny<string>())).ReturnsAsync(new GeoResponse());
 
             _geocodioQueryService = new GeocodioQueryService(mockParser.Object, mockQueryDispatchSvc.Object);
         }
 
         [Fact]
-        public async void ReturnsLatLong() 
+        public async void ReturnsGeoInfo() 
         {
             var result = await _geocodioQueryService.Query("foo");
 
-            Assert.Equal("0", result.Lat);
-            Assert.Equal("0", result.Long);
+            Assert.True(result is GeoResponse);
         }
     }
 }

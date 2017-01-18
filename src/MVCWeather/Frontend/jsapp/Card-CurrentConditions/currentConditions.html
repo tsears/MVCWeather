@@ -1,5 +1,6 @@
 <div id="current-conditions-card">
     <h2>Current Conditions as of {{ccvm.data.time * 1000 | date:'EEEE MM/dd/yyyy HH:mm'}}</h2>
+    <h2>{{ccvm.geo.formatted_address}}</h2>
     <div class="data">
         <div>
             <div id="icon-container">
@@ -40,6 +41,16 @@
                 <tr>
                     <td>Visibility</td>
                     <td>{{ccvm.data.visibility > 10 ? 'unlimited' : ccvm.data.visibility + ' miles'}}</td>
+                </tr>
+
+                <tr>
+                    <td>Dew Point</td>
+                    <td>{{ccvm.data.dewPoint}}&deg;</td>
+                </tr>
+
+                <tr>
+                    <td>Wind Chill</td>
+                    <td>{{ccvm.data.apparentTemperature}}&deg;</td>
                 </tr>
             </table>
         </div>
