@@ -22,6 +22,9 @@ module.exports = function(config) {
 			pattern: 'node_modules/angular-animate/angular-animate.min.js',
 			included: true
 		}, {
+			pattern: 'node_modules/angular-cookies/angular-cookies.min.js',
+			included: true
+		}, {
 			pattern: 'Frontend/jsapp/**/*.js',
 			included: true
 		}, {

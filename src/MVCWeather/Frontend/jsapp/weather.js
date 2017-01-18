@@ -23,6 +23,6 @@ d.constant('iconMappings', {
     'default': '/icons/default.svg'
 });
 
-const app = angular.module('weatherApp', ['weatherDirectives', 'ngAnimate']);
+const app = angular.module('weatherApp', ['weatherDirectives', 'ngAnimate', 'ngCookies']);
 
-app.controller('weatherController', ['$http', '$timeout', WeatherController]);
+app.controller('weatherController', ['$http', '$timeout', '$cookies', WeatherController]);
