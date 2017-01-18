@@ -1,5 +1,10 @@
 .alert {
     transition: background-color 0.3s;
+
+    svg path {
+        fill: #d8000c;
+    }
+
     &:hover {
         cursor: pointer;
         background-color: #ffaa9e;

@@ -6,15 +6,16 @@ export default class Alert {
         };
         this.replace = true;
         this.templateUrl = '/ng-partials/jsapp/Alert/alert.html';
-        this.controller = [AlertController];
+        this.controller = ['iconMappings', AlertController];
         this.controllerAs = 'avm';
         this.bindToController = true;
     }
 }
 
 class AlertController {
-    constructor() {
+    constructor(iconMappings) {
         this.descriptionVisible = false;
+        this.iconMappings = iconMappings;
     }
 
     alertClicked() {
