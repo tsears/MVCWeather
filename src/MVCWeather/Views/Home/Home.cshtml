@@ -13,17 +13,17 @@
     <ng-include src="wvm.iconMappings.loading"></ng-include>
   </div>
 
-  <h1 class="center">The Weather</h1>
+  <div id="big-container">
+    <h1 class="center">The Weather</h1>
 
-  <div id="big-container" ng-class="wvm.currentConditions ? 'side-search' : 'big-search'">
     <div id="search-container">
-      <h2>Search</h2>
-      <input placeholder="Enter City or Zip" ng-model="wvm.query"/> <button ng-click="wvm.getWeatherData()" ng-disabled="wvm.loading">Get Forecast</button>
+      <input placeholder="Enter City or Zip" ng-model="wvm.query" ng-keyup="wvm.checkEnter($event)"/> <button ng-click="wvm.getWeatherData()" ng-disabled="wvm.loading"><ng-include src="wvm.iconMappings.magnify"></ng-include></button>
       <p>City, State -OR- Zip Code</p>
     </div>
-    <div id="current-conditions-container">
-      <current-conditions-card data="wvm.currentConditions" geo="wvm.selectedGeo" ng-class="wvm.visibility" ng-if="wvm.currentConditions"></current-conditions-card>
-    </div>
+  </div>
+
+  <div id="current-conditions-container" ng-if="wvm.currentConditions">
+    <current-conditions-card data="wvm.currentConditions" geo="wvm.selectedGeo" ng-class="wvm.visibility"></current-conditions-card>
   </div>
 
   <h1 ng-if="wvm.alerts">Alerts</h1>

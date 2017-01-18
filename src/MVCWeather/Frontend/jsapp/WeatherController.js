@@ -17,6 +17,12 @@ export default class WeatherController {
         }
     }
 
+    checkEnter(evt) {
+        if (evt.keyCode === 13) {
+            this.getWeatherData();
+        }
+    }
+
     getWeatherData() {
         const self = this;
         const url = `/api/weather?query=${this.query}`;

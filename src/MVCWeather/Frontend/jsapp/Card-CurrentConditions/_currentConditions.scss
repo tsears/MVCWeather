@@ -1,3 +1,9 @@
+ #current-conditions-container {
+     border-radius: 5px;
+     background-color: #555;
+     padding: 1em;
+ }
+
 #current-conditions-card {
     visibility: hidden;
     transition:opacity linear 0.5s;

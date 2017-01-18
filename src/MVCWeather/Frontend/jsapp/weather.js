@@ -24,6 +24,7 @@ d.constant('iconMappings', {
     'partly-cloudy-night' : '/icons/partly-cloudy-night.svg',
     'default': '/icons/default.svg',
     'loading': '/icons/loading.svg',
+    'magnify': '/icons/magnify.svg'
 });
 
 const app = angular.module('weatherApp', ['weatherDirectives', 'ngAnimate', 'ngCookies']);

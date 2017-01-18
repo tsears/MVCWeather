@@ -5,11 +5,13 @@ $step-size-heading: 0.33333;
     font-size: $size * $step-size-heading + em;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
 	margin: 1em;
 	//color: $linkColor;
-	//font-family: 'Indie Flower', sans-serif;
-	font-weight: 600;
+	font-family: 'Cantarell', Helvetica, Arial, sans-serif;
+	letter-spacing: -1px;
+	text-transform: uppercase;
 }
 
 $start: 6;
@@ -20,4 +22,11 @@ $start: 6;
 	}
 
 	$start: $start - 1;
+}
+
+h1 {
+	font-family: 'Fjalla One', Helvetica, Arial, sans-serif;
+	letter-spacing: 3px;
+	font-size: 3em;
+	margin: 1em 1em 0em 1em;
 }
