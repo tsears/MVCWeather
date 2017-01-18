@@ -2,6 +2,17 @@
     visibility: hidden;
     transition:opacity linear 0.5s;
 
+    #icon-container {
+        svg {
+            height: 100px;
+            width: 100px;
+
+            path {
+                fill: #eee;
+            }
+        }
+    }
+
     &.hidden {
         opacity: 0;
     }

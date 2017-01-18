@@ -1,13 +1,13 @@
 <div class="forecast-item">
-    <h2>{{data.time * 1000 | date: 'EEE'}}</h2>
-    <div>
-        <img src="//placehold.it/100x100"/>
+    <h2>{{fvm.data.time * 1000 | date: 'EEE'}}</h2>
+    <div class="icon-container">
+        <ng-include src="fvm.iconMappings[fvm.data.icon] ? fvm.iconMappings[fvm.data.icon] : fvm.iconMappings.default"></ng-include>
     </div>
-    <div class="tempContainer">
-        <h2 class="low">{{data.temperatureMin | number: 0}}&deg;</h2>
-        <h2 class="high">{{data.temperatureMax | number: 0}}&deg;</h2>
+    <div class="temp-container">
+        <h2 class="low">{{fvm.data.temperatureMin | number: 0}}&deg;</h2>
+        <h2 class="high">{{fvm.data.temperatureMax | number: 0}}&deg;</h2>
     </div>
     <p>
-     {{data.summary}}
+     {{fvm.data.summary}}
     </p>
 </div>

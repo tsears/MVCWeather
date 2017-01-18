@@ -6,5 +6,14 @@ export default class ForecastDay {
         };
         this.replace = true;
         this.templateUrl = '/ng-partials/jsapp/Card-ForecastDay/forecastDay.html';
+        this.controller = ['iconMappings', ForecastDayController];
+        this.controllerAs = 'fvm';
+        this.bindToController = true;
+    }
+}
+
+class ForecastDayController {
+    constructor(iconMappings) {
+        this.iconMappings = iconMappings;
     }
 }

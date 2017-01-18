@@ -26,6 +26,7 @@
   <alert ng-repeat="a in wvm.alerts | orderBy: 'time * 1000'" data="a" class="error-notification" ng-if="wvm.alerts"></alert>
 
   <h1 ng-if="wvm.dailyForecastData">Forecast for this Week</h1>
+  <p ng-if="wvm.dailyForecastData" style="margin: 1em 2em;">{{wvm.dailyForecastData.summary}}</p>
   <div id="forecast-container" ng-style="wvm.dailyForecastData ? {'overflow-x' : 'scroll' } : {}">
     <forecast-day-card ng-repeat="d in wvm.dailyForecastData.data" data="d" ng-if="wvm.dailyForecastData"></forecast-day-card>
   </div>

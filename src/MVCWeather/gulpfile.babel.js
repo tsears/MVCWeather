@@ -3,6 +3,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import ScriptTasks from './gulp-tasks/scripts';
 import CssTasks from './gulp-tasks/css';
 import DevTasks from './gulp-tasks/dev';
+import AssetTasks from './gulp-tasks/assets';
 
 let plugins = gulpLoadPlugins({
 	pattern: [
@@ -29,6 +30,10 @@ gulp.task('sass', cssTasks.sass());
 let devTasks = new DevTasks(gulp, plugins);
 gulp.task('watch', devTasks.watch());
 
+// Asset Tasks
+let assetTasks = new AssetTasks(gulp, plugins);
+gulp.task('icons', assetTasks.icons());
+
 gulp.task('default',
   [
     'lint',
@@ -37,6 +42,7 @@ gulp.task('default',
     'jsTest',
     'angularPartials',
     'sass',
+    'icons',
     'watch',
   ]
 );

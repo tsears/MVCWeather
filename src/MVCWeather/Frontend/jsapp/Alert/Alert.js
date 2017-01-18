@@ -6,7 +6,7 @@ export default class Alert {
         };
         this.replace = true;
         this.templateUrl = '/ng-partials/jsapp/Alert/alert.html';
-        this.controller = AlertController;
+        this.controller = [AlertController];
         this.controllerAs = 'avm';
         this.bindToController = true;
     }
