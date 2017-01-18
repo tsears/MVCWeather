@@ -24,10 +24,10 @@ export default class WeatherController {
         
         self.http.get(url).then((resp) => {
             this.cookies.put('lastQuery', this.query);
-            self.dailyForecastData = resp.data.daily;
-            self.hourlyForecastData = resp.data.hourly;
-            self.currentConditions = resp.data.currently;
-            self.alerts = resp.data.alerts;
+            self.dailyForecastData = resp.data.Weather.daily;
+            self.hourlyForecastData = resp.data.Weather.hourly;
+            self.currentConditions = resp.data.Weather.currently;
+            self.alerts = resp.data.Weather.alerts;
 
             this.timeout(() => {
                 if (this.visibility === 'hidden') {

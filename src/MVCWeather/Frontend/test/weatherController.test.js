@@ -13,30 +13,32 @@ describe('Weather Controller Tests', () => {
         $httpBackend.when('GET', function(url) {
             return url.indexOf('/api/Weather?query=12345') > -1;
         }).respond(200, {
-            currently: {
-                temperature: 72.0
-            },
-            daily: {
-                summary: "foo",
-                icon: "apple",
-                data: [
-                    { },
-                    { }
-                ],
-            },
-            hourly: {
-                summary: "bar",
-                icon: "banana",
-                data: [{},{},{}]
-            },
-            alerts: [
-                {
-                    title: "baz"
+            Weather: {
+                currently: {
+                    temperature: 72.0
                 },
-                {
-                    title: "bonk"
-                }
-            ]
+                daily: {
+                    summary: "foo",
+                    icon: "apple",
+                    data: [
+                        { },
+                        { }
+                    ],
+                },
+                hourly: {
+                    summary: "bar",
+                    icon: "banana",
+                    data: [{},{},{}]
+                },
+                alerts: [
+                    {
+                        title: "baz"
+                    },
+                    {
+                        title: "bonk"
+                    }
+                ]
+            }
         });
 
         let $controller = $injector.get('$controller');

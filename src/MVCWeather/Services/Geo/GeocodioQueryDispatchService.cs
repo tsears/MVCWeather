@@ -1,9 +1,7 @@
-using System.Net;
-using System.Runtime.Serialization.Json;
-using tsears.MVCWeather.DataStructures;
 using System.Threading.Tasks;
 
-namespace tsears.MVCWeather.Services.Geo {
+namespace tsears.MVCWeather.Services.Geo
+{
 
     public class GeocodioQueryDispatchService : IGeoQueryDispatchService
     {
@@ -13,11 +11,9 @@ namespace tsears.MVCWeather.Services.Geo {
             _restService = restService;
         }
 
-        public async Task<GeoCoordinate> Query(string q) {
+        public async Task<GeoResponse> Query(string q) {
             GeoResponse resp = await _restService.MakeRequest(q).ConfigureAwait(false);
-
-            var loc = resp.Results[0].Location;
-            return new GeoCoordinate(loc.Lat.ToString(), loc.Long.ToString());
+            return resp;
         }
     }
 }

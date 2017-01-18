@@ -1,13 +1,13 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using tsears.MVCWeather.Services.Geo;
 using tsears.MVCWeather.Services.Weather;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using tsears.MVCWeather.DataStructures;
 
 namespace tsears.MVCWeather.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/weather")]
     public class WeatherController : Controller
     {
         private readonly IGeoQueryService _geoQueryService;
@@ -22,9 +22,31 @@ namespace tsears.MVCWeather.Controllers
         [HttpGet]
         public async Task<string> Get(string query)
         {
-            var coords = await _geoQueryService.Query(query);
+            var geo = await _geoQueryService.Query(query);
+            var coords = new GeoCoordinate(geo.Results[0].Location.Lat.ToString(), geo.Results[0].Location.Long.ToString());
+            
             var forecast = await _weatherQueryService.Query(coords);
-            return JsonConvert.SerializeObject(forecast);
+
+            var resp = new WeatherResponse(geo, forecast);
+
+            return JsonConvert.SerializeObject(resp);
+        }
+
+        [HttpGet]
+        [Route("reverse")]
+        public async Task<string> Get(string lat, string lon) {
+            var coords = new GeoCoordinate(lat, lon);
+
+            var geoTask = _geoQueryService.ReverseQuery(coords);
+            var forecastTask = _weatherQueryService.Query(coords);
+
+            await Task.WhenAll(new Task[] {geoTask, forecastTask});
+
+            var geo = await geoTask;
+            var forecast = await forecastTask;
+
+            var resp = new WeatherResponse(geo, forecast);
+            return JsonConvert.SerializeObject(resp);
         }
     }
 }

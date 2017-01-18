@@ -1,10 +1,11 @@
-using tsears.MVCWeather.DataStructures;
 using System.Threading.Tasks;
+using tsears.MVCWeather.DataStructures;
 
 namespace tsears.MVCWeather.Services.Geo
 {
-  public interface IGeoQueryService
+    public interface IGeoQueryService
   {
-    Task<GeoCoordinate> Query(string query);
+    Task<GeoResponse> Query(string query);
+    Task<GeoResponse> ReverseQuery(GeoCoordinate geo);
   }
 }
