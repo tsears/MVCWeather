@@ -1,0 +1,31 @@
+#forecast-navigator {
+    display: flex;
+    background-color: rgba(0,0,0,0.2);
+    margin: 1em 2em;
+}
+
+#forecast-back, #forecast-forward {
+    font-weight: bolder;
+    margin: 0;
+    padding: 1em;
+    background-color: rgba(0,0,0,0.1);
+
+    transition: background-color 0.3s;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    >span {
+        position:relative;
+        top: 50%;
+        font-size: 2em;
+    }
+}
+
+#forecast-container {
+  display: flex;
+  justify-content:space-between;
+  overflow: hidden;
+}

@@ -24,5 +24,19 @@
 
     .data {
         display: flex;
+        justify-content: space-between;
+
+        >div:first-child {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 1em 2em;
+        }
+
+        >div:last-child {
+            flex-grow: 1;
+            table {
+                width: 100%;
+            }
+        }
     }
 }

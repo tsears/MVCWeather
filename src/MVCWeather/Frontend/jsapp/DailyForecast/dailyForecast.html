@@ -1,0 +1,7 @@
+<div id="forecast-navigator">
+    <div id="forecast-back"><span>&lt;</span></div>
+    <div id="forecast-container">
+        <forecast-day-card ng-repeat="d in dfvm.data.data" data="d" ng-if="dfvm.data"></forecast-day-card>
+    </div>
+    <div id="forecast-forward"><span>&gt;</span></div>
+</div>

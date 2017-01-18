@@ -1,10 +1,10 @@
 @import 'reset';
 @import 'headings';
 @import 'search-container';
-@import 'forecast-container';
 @import 'tables';
 @import 'notifications';
 @import 'loadingSpinner';
+@import 'links';
 @import '../jsapp/**/*.scss';
 
 html, body {
@@ -38,6 +38,12 @@ header, footer {
   box-shadow: 0 0 10px #000;
 }
 
+footer {
+  >div {
+    display: flex;
+    justify-content: space-between;
+  }
+}
 
 strong {
   font-weight: bold;

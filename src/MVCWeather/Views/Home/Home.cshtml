@@ -20,12 +20,9 @@
       <h2>Search</h2>
       <input placeholder="Enter City or Zip" ng-model="wvm.query"/> <button ng-click="wvm.getWeatherData()" ng-disabled="wvm.loading">Get Forecast</button>
       <p>City, State -OR- Zip Code</p>
-      <!--<div class="loading-icon" >
-        <ng-include src="wvm.iconMappings.loading"></ng-include>
-      </div>-->
     </div>
     <div id="current-conditions-container">
-      <current-conditions-card data="wvm.currentConditions" geo="wvm.geoInput" ng-class="wvm.visibility" ng-if="wvm.currentConditions"></current-conditions-card>
+      <current-conditions-card data="wvm.currentConditions" geo="wvm.selectedGeo" ng-class="wvm.visibility" ng-if="wvm.currentConditions"></current-conditions-card>
     </div>
   </div>
 
@@ -34,8 +31,5 @@
 
   <h1 ng-if="wvm.dailyForecastData">Forecast for this Week</h1>
   <p ng-if="wvm.dailyForecastData" style="margin: 1em 2em;">{{wvm.dailyForecastData.summary}}</p>
-  <div id="forecast-container" ng-style="wvm.dailyForecastData ? {'overflow-x' : 'scroll' } : {}">
-    <forecast-day-card ng-repeat="d in wvm.dailyForecastData.data" data="d" ng-if="wvm.dailyForecastData"></forecast-day-card>
-  </div>
-
+  <daily-forecast data="wvm.dailyForecastData" ng-if="wvm.dailyForecastData"></daily-forecast>
 </div>

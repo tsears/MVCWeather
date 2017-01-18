@@ -23,22 +23,38 @@ export default class WeatherController {
         this.loading = true;
         
         self.http.get(url).then((resp) => {
-            this.cookies.put('lastQuery', this.query);
-
-            self.dailyForecastData = resp.data.Weather.daily;
-            self.hourlyForecastData = resp.data.Weather.hourly;
-            self.currentConditions = resp.data.Weather.currently;
-            self.alerts = resp.data.Weather.alerts;
-
-            self.geoInput = resp.data.Geo.input;
-            self.geoMatches = resp.data.Geo.results;
-
-            this.timeout(() => {
-                if (this.visibility === 'hidden') {
-                    this.visibility = 'visible';
-                }
-                this.loading = false;
-            }, 1000); 
+            this._updateData(resp);
+            self.selectedGeo = resp.data.Geo.results[0];
         });
+    }
+
+    changeWeatherData(geo) {
+        const self = this;
+        const url = `/api/weather/reverse?lat=${geo.location.lat}&lon=${geo.location.lng}`;
+        self.selectedGeo = geo;
+
+        self.http.get(url).then((resp) => {
+            this._updateData(resp);
+        });
+    }
+
+    _updateData(resp) {
+        const self =  this;
+        this.cookies.put('lastQuery', this.query);
+
+        self.dailyForecastData = resp.data.Weather.daily;
+        self.hourlyForecastData = resp.data.Weather.hourly;
+        self.currentConditions = resp.data.Weather.currently;
+        self.alerts = resp.data.Weather.alerts;
+
+        self.geoInput = resp.data.Geo.input;
+        self.geoMatches = resp.data.Geo.results;
+
+        this.timeout(() => {
+            if (this.visibility === 'hidden') {
+                this.visibility = 'visible';
+            }
+            this.loading = false;
+        }, 1000); 
     }
 }

@@ -1,0 +1,18 @@
+a {
+    color: #ddd;
+}
+
+.geo-link {
+
+    &.selected {
+        font-weight: bold;
+    }
+
+    &:not(.selected) {
+        text-decoration: underline;
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
