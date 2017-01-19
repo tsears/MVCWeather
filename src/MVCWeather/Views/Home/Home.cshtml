@@ -26,10 +26,10 @@
     <current-conditions-card data="wvm.currentConditions" geo="wvm.selectedGeo" ng-class="wvm.visibility"></current-conditions-card>
   </div>
 
-  <h1 ng-if="wvm.alerts">Alerts</h1>
+  <h1 class="top-heading" ng-if="wvm.alerts">Alerts</h1>
   <alert ng-repeat="a in wvm.alerts | orderBy: 'time * 1000'" data="a" class="error-notification" ng-if="wvm.alerts"></alert>
 
-  <h1 ng-if="wvm.dailyForecastData">Forecast for this Week</h1>
+  <h1 class="top-heading" ng-if="wvm.dailyForecastData">Forecast for this Week</h1>
   <p ng-if="wvm.dailyForecastData" style="margin: 1em 2em;">{{wvm.dailyForecastData.summary}}</p>
   <daily-forecast data="wvm.dailyForecastData" ng-if="wvm.dailyForecastData"></daily-forecast>
 </div>

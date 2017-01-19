@@ -7,7 +7,7 @@ $step-size-heading: 0.33333;
 
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 1em;
+	margin: 1em 1em 0 1em;
 	//color: $linkColor;
 	font-family: 'Cantarell', Helvetica, Arial, sans-serif;
 	letter-spacing: -1px;
@@ -28,6 +28,9 @@ h1 {
 	font-family: 'Fjalla One', Helvetica, Arial, sans-serif;
 	letter-spacing: 3px;
 	font-size: 3em;
-	margin: 1em 1em 0em 1em;
 	text-shadow: 3px 3px #000;
+
+	&.top-heading {
+		margin-left: 0.7em;
+	}
 }

@@ -1,6 +1,6 @@
 <div ng-click="avm.alertClicked()" class="alert">
     <div>
-        <ng-include src="avm.descriptionVisible ? avm.iconMappings.down : avm.iconMappings.up"/>
+        <ng-include src="avm.descriptionVisible ? avm.iconMappings.up : avm.iconMappings.down"/>
         <strong>{{avm.data.title}}</strong> until {{avm.data.expires * 1000 | date: 'EEEE HH:mm'}}
     </div>
     <div class="alertDescription" ng-class="avm.descriptionVisible ? 'visible' : 'hidden'">

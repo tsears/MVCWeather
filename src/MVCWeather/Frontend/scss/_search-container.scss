@@ -1,11 +1,18 @@
 #big-container {
   display: flex;
   justify-content: space-between;
+  margin: 0 2em;
+  margin-right: 1em;
+
+  h1 {
+    margin-left: 0;
+  }
 }
 
 #search-container {
   border-radius: 5px;
   background-color: #555;
+  box-shadow: 3px 3px #333;
 
   input {
     height: 19px;
