@@ -41,7 +41,7 @@ namespace tsears.MVCWeather.Services.Geo
 
                 var geo = await _geoQueryDispatchService.Query(query).ConfigureAwait(false);
                
-                await _memcachedClient.StoreAsync(StoreMode.Replace, cacheKey, geo, DateTime.Now.AddDays(7));
+                await _memcachedClient.StoreAsync(StoreMode.Add, cacheKey, geo, DateTime.Now.AddDays(7));
                 return geo;
             }
             else
