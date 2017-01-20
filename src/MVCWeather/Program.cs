@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
@@ -9,6 +10,15 @@ namespace tsears.MVCWeather
     {
         public static void Main(string[] args)
         {
+
+            if (Environment.GetEnvironmentVariable("DARKSKY_API_KEY") == null) {
+                throw new Exception("Missing weather API key");
+            }
+            
+            if (Environment.GetEnvironmentVariable("GEOCODIO_API_KEY") == null) {
+                throw new Exception("Missing geo API key");
+            }
+    
             var config = new ConfigurationBuilder()
                 .AddCommandLine(args)
                 .AddEnvironmentVariables(prefix: "ASPNETCORE_")
