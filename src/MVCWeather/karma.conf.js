@@ -25,6 +25,12 @@ module.exports = function(config) {
 			pattern: 'node_modules/angular-cookies/angular-cookies.min.js',
 			included: true
 		}, {
+			pattern: 'node_modules/ng-dialog/js/ngDialog.min.js',
+			included: true
+		}, {
+			pattern: 'node_modules/angular-tooltips/dist/angular-tooltips.min.js',
+			included: true
+		}, {
 			pattern: 'Frontend/jsapp/**/*.js',
 			included: true
 		}, {

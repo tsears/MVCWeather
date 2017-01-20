@@ -5,6 +5,8 @@
 @import 'notifications';
 @import 'loadingSpinner';
 @import 'links';
+@import 'lib/css-lib';
+@import 'dialog';
 @import '../jsapp/**/*.scss';
 
 html, body {
@@ -51,4 +53,25 @@ strong {
 
 .center {
   text-align: center;
+}
+
+
+/// shared
+
+.temp-container {
+  display: flex;
+  
+  h2 {
+    margin: 0.5em;
+    cursor: default;
+
+    &.low {
+      color: #15a3e0 !important;
+    }
+
+    &.high {
+      color: #ef3725 !important; 
+    }
+  }
+
 }

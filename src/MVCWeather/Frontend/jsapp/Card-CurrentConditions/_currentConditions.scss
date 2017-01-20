@@ -11,7 +11,21 @@
     visibility: hidden;
     transition:opacity linear 0.5s;
 
-    #icon-container {
+    &.hidden {
+        opacity: 0;
+    }
+
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.conditions.data {
+    display: flex;
+    justify-content: space-between;
+
+    .icon-container {
         svg {
             height: 100px;
             width: 100px;
@@ -22,37 +36,19 @@
         }
     }
 
-    &.hidden {
-        opacity: 0;
+    >div:first-child {
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 1em 2em;
+        width: 15%;
+        text-align:center;
     }
 
-    &.visible {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .data {
-        display: flex;
-        justify-content: space-between;
-
-        >div:first-child {
-            border: 1px solid #eee;
-            border-radius: 5px;
-            padding: 1em 2em;
-
-            transition: background-color 0.3s;
-
-            &:hover {
-                background-color: rgba(0,0,0,0.4);
-            }
-        }
-
-        >div:last-child {
-            flex-grow: 1;
-            table {
-                width: 100%;
-                margin-top: 0;
-            }
+    >div:last-child {
+        flex-grow: 1;
+        table {
+            width: 100%;
+            margin-top: 0;
         }
     }
 }

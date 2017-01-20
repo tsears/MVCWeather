@@ -4,7 +4,7 @@ export default class DailyForecast {
         this.scope = {};
         this.replace = true;
         this.templateUrl = '/ng-partials/jsapp/DailyForecast/dailyForecast.html';
-        this.controller = DailyForecastController;
+        this.controller = ['ngDialog', DailyForecastController];
         this.controllerAs = "dfvm";
         this.bindToController = { data: '=' };
     }
@@ -52,5 +52,6 @@ export default class DailyForecast {
 }
 
 class DailyForecastController {
-
+ 
 }
+

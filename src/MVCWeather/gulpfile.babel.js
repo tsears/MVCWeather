@@ -24,7 +24,9 @@ gulp.task('jsTest', scriptTasks.jsTest());
 
 // Css Tasks
 let cssTasks = new CssTasks(gulp, plugins);
-gulp.task('sass', cssTasks.sass());
+gulp.task('libCss', cssTasks.libraryCSSDependencies());
+gulp.task('sass', ['libCss'], cssTasks.sass());
+
 
 // Dev Tasks
 let devTasks = new DevTasks(gulp, plugins);

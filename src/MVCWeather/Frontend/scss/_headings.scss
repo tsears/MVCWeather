@@ -11,7 +11,6 @@ h1, h2, h3, h4, h5, h6 {
 	//color: $linkColor;
 	font-family: 'Cantarell', Helvetica, Arial, sans-serif;
 	letter-spacing: -1px;
-	text-transform: uppercase;
 }
 
 $start: 6;
@@ -29,6 +28,7 @@ h1 {
 	letter-spacing: 3px;
 	font-size: 3em;
 	text-shadow: 3px 3px #000;
+	text-transform: uppercase;
 
 	&.top-heading {
 		margin-left: 0.7em;

@@ -1,4 +1,4 @@
-<div class="forecast-item">
+<div class="forecast-item" ng-click="fvm.openDialog()">
     <h2>{{fvm.data.time * 1000 | date: 'EEE'}}</h2>
     <div class="icon-container">
         <ng-include src="fvm.iconMappings[fvm.data.icon] ? fvm.iconMappings[fvm.data.icon] : fvm.iconMappings.default"></ng-include>

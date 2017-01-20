@@ -1,9 +1,9 @@
 <div id="current-conditions-card">
-    <h2>Current Conditions as of {{ccvm.data.time * 1000 | date:'EEEE MM/dd/yyyy HH:mm'}}</h2>
-    <h2>{{ccvm.geo.formatted_address}}</h2>
-    <div class="data">
+    <h2>Current Conditions as of {{ccvm.data.time * 1000 | date:'EEEE MMMM d h:mm a'}} for {{ccvm.geo.formatted_address}}</h2>
+
+    <div class="conditions data">
         <div>
-            <div id="icon-container">
+            <div class="icon-container">
                 <ng-include src="ccvm.iconMappings[ccvm.data.icon] ? ccvm.iconMappings[ccvm.data.icon] : ccvm.iconMappings.default"></ng-include>
             </div>
             <div>
@@ -35,7 +35,7 @@
 
                 <tr>
                     <td>Wind</td>
-                    <td>{{ccvm.data.windSpeed}} mph</td>
+                    <td>{{ccvm.data.windSpeed}} mph {{ccvm.data.windBearing | compassDirection}}</td>
                 </tr>
 
                 <tr>
@@ -51,6 +51,77 @@
                 <tr>
                     <td>Wind Chill</td>
                     <td>{{ccvm.data.apparentTemperature}}&deg;</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h2>Today's Forecast</h2>
+
+    <div class="conditions data">
+        <div>
+            <div class="icon-container">
+                <ng-include src="ccvm.iconMappings[ccvm.detail.icon] ? ccvm.iconMappings[ccvm.detail.icon] : ccvm.iconMappings.default"></ng-include>
+            </div>
+            <div class="temp-container">
+                <h2 class="center low" tooltips tooltip-template="{{ccvm.detail.temperatureMinTime * 1000 | date: 'h:mm a'}}">{{ccvm.detail.temperatureMin | number: 0}}&deg;</h2>
+                <h2 class="center high" tooltips tooltip-template="{{ccvm.detail.temperatureMaxTime * 1000 | date: 'h:mm a'}}">{{ccvm.detail.temperatureMax | number: 0}}&deg;</h2>
+            </div>
+            <p class="center">
+                {{ccvm.detail.summary}}
+            </p>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>Sunrise</td>
+                    <td>{{ccvm.detail.sunriseTime * 1000 | date: 'h:mm a'}}</td>
+                </tr>
+                <tr>
+                    <td>Sunset</td>
+                    <td>{{ccvm.detail.sunsetTime * 1000 | date: 'h:mm a'}}</td>
+                </tr>
+                <tr>
+                    <td>Chance of Precip ({{ccvm.detail.precipType}})</td>
+                    <td>{{ccvm.detail.precipProbability * 100}}%</td>
+                </tr>
+
+                <tr>
+                    <td>Max Precipitation Intensity</td>
+                    <td>
+                        <span ng-if="ccvm.detail.precipIntensityMax <= 0.01">less than .01 in/hr</span>
+                        <span ng-if="ccvm.detail.precipIntensityMax > 0.01">{{ccvm.detail.precipIntensity | number: 2}} in/hr around {{ccvm.detail.precipIntensityMaxTime * 1000 | date: 'h:MM a'}}</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Humidity</td>
+                    <td>{{ccvm.detail.humidity * 100}}%</td>
+                </tr>
+
+                <tr>
+                    <td>Wind</td>
+                    <td>{{ccvm.detail.windSpeed}} mph {{ccvm.detail.windBearing | compassDirection}}</td>
+                </tr>
+
+                <tr>
+                    <td>Visibility</td>
+                    <td>{{ccvm.detail.visibility > 10 ? 'unlimited' : ccvm.detail.visibility + ' miles'}}</td>
+                </tr>
+
+                <tr>
+                    <td>Dew Point</td>
+                    <td>{{ccvm.detail.dewPoint}}&deg;</td>
+                </tr>
+
+                <tr>
+                    <td>Max Wind Chill</td>
+                    <td>{{ccvm.detail.apparentTemperatureMax}}&deg; around {{ccvm.detail.apparentTemperatureMaxTime * 1000 | date: 'h:MM a'}}</td>
+                </tr>
+
+                <tr>
+                    <td>Min Wind Chill</td>
+                    <td>{{ccvm.detail.apparentTemperatureMin}}&deg; around {{ccvm.detail.apparentTemperatureMinTime * 1000 | date: 'h:MM a'}}</td>
                 </tr>
             </table>
         </div>

@@ -5,6 +5,7 @@
   border: 1px solid #eee;
   border-radius: 5px;
   transition: background-color 0.3s;
+  cursor: pointer;
 
   &:hover {
       background-color: rgba(0,0,0,0.4);
@@ -28,21 +29,21 @@
       }
     }
   }
+}
 
-  .temp-container {
-    display: flex;
+.ngdialog-content .conditions.data {
+  display: block;
+
+  >div:first-child {
+    width: auto;
+    text-align: center;
     
-    h2 {
-      margin: 0.5em;
-
-      &.low {
-        color: #15a3e0;
-      }
-
-      &.high {
-        color: #ef3725; 
-      }
+    .temp-container {
+      justify-content:center;
     }
+  }
 
+  table {
+     margin-left: 0;
   }
 }
