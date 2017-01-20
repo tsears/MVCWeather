@@ -4,6 +4,10 @@
     margin: 1em 2em;
     border-radius: 5px;
     box-shadow: 3px 3px #333;
+
+    @media only screen and (max-width: 767px) {
+		margin: 0;
+	}
 }
 
 #forecast-back, #forecast-forward {
@@ -24,6 +28,10 @@
         top: 50%;
         font-size: 2em;
     }
+
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 #forecast-back {
@@ -40,4 +48,8 @@
   display: flex;
   justify-content:space-between;
   overflow: hidden;
+
+  @media only screen and (max-width: 767px) {
+      display: block;
+  }
 }

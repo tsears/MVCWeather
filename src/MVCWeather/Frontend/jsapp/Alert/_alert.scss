@@ -23,4 +23,10 @@
         }
 
     }
+
+    @media only screen and (max-width: 767px) {
+        pre {
+            white-space: pre-line;
+        }
+    }
 }

@@ -11,6 +11,10 @@ h1, h2, h3, h4, h5, h6 {
 	//color: $linkColor;
 	font-family: 'Cantarell', Helvetica, Arial, sans-serif;
 	letter-spacing: -1px;
+
+	@media only screen and (max-width: 767px) {
+		line-height: 1.5em;
+	}
 }
 
 $start: 6;
@@ -32,5 +36,13 @@ h1 {
 
 	&.top-heading {
 		margin-left: 0.7em;
+	}
+
+	@media only screen and (max-width: 767px) {
+		margin: 1em auto;
+
+		&.top-heading {
+			margin-left: auto;
+		}
 	}
 }

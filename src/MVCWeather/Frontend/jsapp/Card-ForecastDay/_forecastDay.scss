@@ -27,6 +27,19 @@
       path {
         fill: #eee;
       }
+
+      @media only screen and (max-width: 767px) {
+        display: block;
+        margin: 0 auto;
+        width: 30%;
+        height: 30%;
+      }
+    }
+  }
+
+  p {
+    @media only screen and (max-width: 767px) {
+      text-align: center;
     }
   }
 }

@@ -12,6 +12,10 @@
   padding: 1em;
   position: relative;
   width: 50%;
+
+  @media only screen and (max-width: 767px) {
+		width: auto;
+	}
 }
 
 .ngdialog.ngdialog-theme-dark .ngdialog-content h1,
