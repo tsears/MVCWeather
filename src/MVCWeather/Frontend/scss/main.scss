@@ -55,11 +55,15 @@ strong {
   text-align: center;
 }
 
+.hideOverflow {
+  overflow: hidden;
+}
 
 /// shared
 
 .temp-container {
   display: flex;
+  justify-content: center;
   
   h2 {
     margin: 0.5em;

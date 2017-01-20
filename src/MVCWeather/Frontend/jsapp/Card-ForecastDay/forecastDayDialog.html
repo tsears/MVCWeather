@@ -1,4 +1,4 @@
-<h2>Today's Detailed Forecast</h2>
+<h2>{{fvm.data.time * 1000 | date: 'EEEE'}}'s Forecast</h2>
 
 <div class="conditions data">
     <div>
@@ -25,14 +25,14 @@
             </tr>
             <tr>
                 <td>Chance of Precip ({{fvm.data.precipType}})</td>
-                <td>{{fvm.data.precipProbability * 100}}%</td>
+                <td>{{fvm.data.precipProbability * 100 | number }}%</td>
             </tr>
 
             <tr>
                 <td>Max Precipitation Intensity</td>
                 <td>
                     <span ng-if="fvm.data.precipIntensityMax <= 0.01">less than .01 in/hr</span>
-                    <span ng-if="fvm.data.precipIntensityMax > 0.01">{{fvm.data.precipIntensity | number: 2}} in/hr around {{fvm.data.precipIntensityMaxTime * 1000 | date: 'h:MM a'}}</span>
+                    <span ng-if="fvm.data.precipIntensityMax > 0.01">{{fvm.data.precipIntensityMax | number: 2}} in/hr around {{fvm.data.precipIntensityMaxTime * 1000 | date: 'h:MM a'}}</span>
                 </td>
             </tr>
 
