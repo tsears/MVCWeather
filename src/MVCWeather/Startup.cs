@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using tsears.MVCWeather.Services.Geo;
 using tsears.MVCWeather.Services.Weather;
 using tsears.MVCWeather.Services;
+using Enyim.Caching;
 
 namespace tsears.MVCWeather
 {
@@ -31,10 +32,17 @@ namespace tsears.MVCWeather
             var parser = new GeoQueryParser();
             var geoDispatchSvc = new GeocodioQueryDispatchService(geoRestSvc);
             var weatherDispatchSvc = new DarkskyQueryDispatchService(weatherRestSvc);
+           
             // Add framework services.
             services.AddMvc();
-            services.AddSingleton<IGeoQueryService>(new GeocodioQueryService(parser, geoDispatchSvc));
-            services.AddSingleton<IWeatherQueryService>(new DarkskyQueryService(weatherDispatchSvc));
+
+            // Add custom services
+            services.AddEnyimMemcached(options => Configuration.GetSection("enyimMemcached").Bind(options)); // this was a dumb way to do it...
+            var sp = services.BuildServiceProvider();
+            var memcachedService = sp.GetService<IMemcachedClient>();
+            services.AddSingleton<IGeoQueryService>(new GeocodioQueryService(parser, geoDispatchSvc, memcachedService));
+            services.AddSingleton<IWeatherQueryService>(new DarkskyQueryService(weatherDispatchSvc, memcachedService));
+  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +53,7 @@ namespace tsears.MVCWeather
 
             app.UseMvc();
             app.UseStaticFiles();
+            app.UseEnyimMemcached();
         }
     }
 }
