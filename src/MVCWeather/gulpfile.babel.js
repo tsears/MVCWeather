@@ -45,6 +45,5 @@ gulp.task('default',
     'angularPartials',
     'sass',
     'icons',
-    'watch',
   ]
 );

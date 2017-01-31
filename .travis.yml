@@ -6,7 +6,12 @@ dotnet: 1.0.0-preview2-1-003177
 before_script:
   - dotnet restore src/MVCWeather
   - dotnet restore test/MVCWeather.Tests
+  - npm install -g gulp
+  - cd src/MVCWeather/Frontend
+  - npm install
 script:
+  - gulp
+  - cd /
   - dotnet build src/MVCWeather --no-incremental
   - dotnet build test/MVCWeather.Tests --no-incremental
   - dotnet test test/MVCWeather.Tests
