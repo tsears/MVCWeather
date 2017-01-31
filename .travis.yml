@@ -11,7 +11,7 @@ before_script:
   - npm install
 script:
   - gulp
-  - cd /
+  - cd ../../../
   - dotnet build src/MVCWeather --no-incremental
   - dotnet build test/MVCWeather.Tests --no-incremental
   - dotnet test test/MVCWeather.Tests
