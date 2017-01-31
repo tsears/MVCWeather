@@ -1,0 +1,12 @@
+language: csharp
+dist: trusty
+sudo: required
+mono: none
+dotnet: 1.0.0-preview2-1-003177
+before_script:
+  - dotnet restore src/MVCWeather
+  - dotnet restore test/MVCWeather.Tests
+script:
+  - dotnet build src/MVCWeather --no-incremental
+  - dotnet build test/MVCWeather.Tests --no-incremental
+  - dotnet run -p test/MVCWeather.Tests
