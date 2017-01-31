@@ -9,4 +9,4 @@ before_script:
 script:
   - dotnet build src/MVCWeather --no-incremental
   - dotnet build test/MVCWeather.Tests --no-incremental
-  - dotnet run -p test/MVCWeather.Tests
+  - dotnet test test/MVCWeather.Tests

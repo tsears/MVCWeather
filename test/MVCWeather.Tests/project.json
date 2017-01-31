@@ -6,12 +6,13 @@
   "dependencies": {
     "System.Runtime.Serialization.Primitives": "4.3.0",
     "xunit": "2.1.0",
-    "dotnet-test-xunit": "1.0.0-rc2-192208-24",
+    "dotnet-test-xunit": "1.0.0-rc2-build10015",
     "Microsoft.DotNet.InternalAbstractions": "1.0.0",
     "MVCWeather": {
       "target": "project"
     },
-    "Moq": "4.6.38-alpha"
+    "Moq": "4.6.38-alpha",
+    "EnyimMemcachedCore": "1.1.1.3"
   },
   "testRunner": "xunit",
   "frameworks": {
