@@ -5,6 +5,10 @@
      margin: 1em 2em;
      box-shadow: 3px 3px #333;
 
+     .temp-chart-container {
+       height: 20em !important;
+     }
+
      @media only screen and (max-width: 767px) {
          margin: auto;
      }

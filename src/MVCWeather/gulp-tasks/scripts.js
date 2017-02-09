@@ -29,6 +29,9 @@ export default class ScriptTasks {
 				'node_modules/angular-cookies/angular-cookies.min.js',
 				'node_modules/ng-dialog/js/ngDialog.min.js',
 				'node_modules/angular-tooltips/dist/angular-tooltips.min.js',
+        'node_modules/chart.js/dist/Chart.min.js',
+        'node_modules/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js',
+        'node_modules/angular-chart.js/dist/angular-chart.js'
   		])
   		.pipe(self.plugins.concat('nglib.js'))
   		.pipe(self.plugins.uglify({
@@ -76,7 +79,7 @@ export default class ScriptTasks {
 
 	jsTest() {
 		const self = this;
-		
+
 		return (done) => {
 			new self.plugins.karma.Server (
 				{

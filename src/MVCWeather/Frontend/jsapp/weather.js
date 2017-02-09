@@ -5,6 +5,11 @@ import Alert from './Alert/Alert';
 import DailyForecast from './DailyForecast/DailyForecast';
 
 
+// configure charts//
+Chart.defaults.global.defaultFontColor = '#EEE';
+Chart.defaults.scale.gridLines.zeroLineColor = '#cecece';
+
+
 angular.module(['720kb.tooltips']).config(['tooltipsConfProvider', function configConf(tooltipsConfProvider) {
   tooltipsConfProvider.configure({
     'size':'small',
@@ -12,7 +17,7 @@ angular.module(['720kb.tooltips']).config(['tooltipsConfProvider', function conf
   });
 }]);
 
-const d = angular.module('weatherDirectives', ['ngDialog', '720kb.tooltips']);
+const d = angular.module('weatherDirectives', ['ngDialog', '720kb.tooltips', 'chart.js']);
 d.directive('currentConditionsCard', () => new CurrentConditions());
 d.directive('forecastDayCard', () => new ForecastDay());
 d.directive('alert', () => new Alert());
@@ -85,7 +90,7 @@ d.filter('compassDirection', () => {
         } else {
             return '-';
         }
-        
+
     };
 });
 
