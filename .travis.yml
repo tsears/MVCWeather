@@ -15,3 +15,7 @@ script:
   - dotnet build src/MVCWeather --no-incremental
   - dotnet build test/MVCWeather.Tests --no-incremental
   - dotnet test test/MVCWeather.Tests
+after_failure: "cat /home/travis/builds/evantahler/actionHero/npm-debug.log"
+cache:
+  directories:
+    - node_modules
