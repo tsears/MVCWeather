@@ -16,7 +16,7 @@
         <div>
             <table>
                 <tr>
-                    <td>Chance of Precip ({{ccvm.data.precipType}})</td>
+                    <td>Chance of Precip <span ng-show="ccvm.data.precipProbability !== 0">({{ccvm.data.precipType}})</span></td>
                     <td>{{ccvm.data.precipProbability * 100 | number}}%</td>
                 </tr>
 
@@ -83,7 +83,7 @@
                 </tr>
                 <tr>
                     <td>Chance of Precip ({{ccvm.detail.precipType}})</td>
-                    <td>{{ccvm.detail.precipProbability * 100}}%</td>
+                    <td>{{ccvm.detail.precipProbability * 100 | number: 0}}%</td>
                 </tr>
 
                 <tr>
