@@ -17,6 +17,7 @@ to focus on design elements to get a clean look and feel.
 * Vagrant
 * git (github)
 * Visual Studio Code
+* Docker
 
 ## Running for dev ##
 
@@ -30,4 +31,20 @@ dotnet restore test/MVCWeather.Tests
 dotnet build src/MVCWeather --no-incremental
 dotnet build test/MVCWeather.Tests --no-incremental
 dotnet test test/MVCWeather.Tests
+~~~
+
+## Docker ##
+
+Prereq: memcache
+
+~~~sh
+docker pull memcached
+docker run --name something-memcached -d memcached
+~~~
+
+Run the container
+
+~~~sh
+docker build -t tsears/weather ./
+docker run -i -t --env-file .env.list -p 127.0.0.1:5000:5000 --link something-memcached:memcache tsears/weather
 ~~~
